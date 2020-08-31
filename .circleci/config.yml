@@ -1,0 +1,26 @@
+version: 2
+jobs:
+  test_build_deploy:
+    docker:
+      - image: vovantam/node:v1
+    steps:
+      - checkout
+      - run:
+          name: Install
+          command: npm install
+      - run:
+          name: Test
+          command: npm test 
+      - run:
+          name: Deploy
+          command: sh deploy.sh
+
+
+workflows:
+  version: 2
+  main:
+    jobs:
+      - test_build_deploy:
+          filters:
+            branches:
+              ignore: gh-pages
