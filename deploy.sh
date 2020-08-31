@@ -10,7 +10,7 @@ npm run build
 
 # Remote git
 rm -rf .git
-cp .circle build/ -r
+cp .circleci build/ -r
 cd build
 
 # Init git
