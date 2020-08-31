@@ -5,14 +5,12 @@
 git config --global user.email "vovantam.dev@gmail.com"
 git config --global user.name "Võ Văn Tâm"
 
-# Checkout new branch
-git checkout -b gh-pages
-
 # Build static pages
 npm run build
 
 # Remote git
 rm -rf .git
+cp .circle build/ -r
 cd build
 
 # Init git
@@ -22,4 +20,7 @@ git remote add origin git@github.com:friendly-devs/friendly-devs.github.io.git
 # Push to github repository
 git add .
 git commit -m "Publishing github pages [skip ci]"
+
+# Checkout new branch
+git checkout -b gh-pages
 git push origin gh-pages -f
