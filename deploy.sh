@@ -17,7 +17,7 @@ cd build
 
 # Init git
 git init
-git add remote add origin git@github.com:friendly-devs/friendly-devs.github.io.git
+git remote add origin git@github.com:friendly-devs/friendly-devs.github.io.git
 
 # Push to github repository
 git add .
