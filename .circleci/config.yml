@@ -1,7 +1,23 @@
-version: 2.1
-orbs:
-  node: circleci/node@3.0.0
+version: 2
+jobs:
+  test_build_deploy:
+    docker:
+      - image: vovantam/node:v1
+    steps:
+      - checkout
+      - run:
+          name: Test
+          command: npm test 
+      - run:
+          name: Deploy
+          command: sh deploy.sh
+
+
 workflows:
-  node-tests:
+  version: 2
+  main:
     jobs:
-      - node/test
+      - test_build_deploy:
+          filters:
+            branches:
+              ignore: gh-pages
